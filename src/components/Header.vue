@@ -1,6 +1,10 @@
 <template>
   <div class="head">
-    欢迎 <span>{{headName}}</span> 进入共享办公企业管理端
+    <!-- <img src="../assets/image/st.jpeg" alt=""> -->
+    <span class="headLeft">共享办公企业管理端</span>
+    <span class="headRight">
+      欢迎-<i>{{headName}}</i>  
+    </span>
   </div>
 </template>
 <script>
@@ -22,11 +26,25 @@ export default {
     height: 60px;
     line-height: 60px;
     border-bottom: 1px solid #ccc;
-    padding-left: 16%;
+    // padding-left: 16%;
     color: #333;
-    span{
-      font-size: 18px;
-      color: #000;
+    img{
+      width: 60px;
+      height: 59px;
+      float: left;
+      margin-left: 40px;
+    }
+    .headLeft{
+      margin-left: 10%;  
+      font-size: 20px;
+    }
+    .headRight{
+      float: right;
+      margin-right: 5%;
+    }
+    i{
+      font-style: normal;
+      color: #409eff;
     }
   }
 </style>

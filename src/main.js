@@ -10,10 +10,30 @@ import './assets/font/iconfont.css'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+// 路由验证
+router.beforeEach((to, from, next) => {
+  // if (to.path == '/') {
+  //   sessionStorage.removeItem('userKey')
+  // }
+  if (to.meta.requireAuth) {
+    if (sessionStorage.getItem('userKey')) {
+      next ()
+    } else {
+      next({
+        path: '/',
+        query: {redirect: to.fullPath}
+      })
+    }
+  } else {
+    next()
+  }
+})
+
 const app = new Vue({
   el: '#app',
   router,
   template: '<App/>',
   components: { App }
 })
+
 export default app

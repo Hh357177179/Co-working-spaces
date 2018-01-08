@@ -15,20 +15,29 @@ export default new Router({
     {
       path: '/root',
       component: Root,
+      meta: {
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+      },
       children: [
         {
           path: '/root',
           name:'首页',
           component: resolve => {
             require(['@/pages/home/Home.vue'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/information',
           name:'企业信息',
           component: resolve => {
             require(['../pages/business/Information'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/department',
@@ -38,7 +47,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/business/Department'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/staff',
@@ -48,7 +60,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/business/Staff'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/facilityinfo',
@@ -58,7 +73,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/equipment/FacilityInfo'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/sceneinfo',
@@ -68,7 +86,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/scene/SceneInfo'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/stationinfo',
@@ -78,7 +99,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/station/StationInfo'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         },
         {
           path: '/changepass',
@@ -88,7 +112,10 @@ export default new Router({
           },
           component: resolve => {
             require(['../pages/system/ChangePass'], resolve)
-          }
+          },
+          meta: {
+            requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+          },
         }
       ]
     },

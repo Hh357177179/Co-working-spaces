@@ -1,5 +1,7 @@
 <template>
-  <div class="login">
+  <div class="login" element-loading-text="登录中～"
+    element-loading-spinner="el-icon-loading"
+    element-loading-background="rgba(0, 0, 0, 0.8)" v-loading="loading" >
     <div class="login-box">
       <p>共享办公管理系统</p>
       <div class="forms">
@@ -36,13 +38,15 @@
           password: [
             {required: true, message: '请输入密码', trigger: 'blur'}
           ]
-        }
+        },
+        loading: false
       }
     },
     methods: {
       submitForm (form) {
         this.$refs[form].validate((valid) => {
           if (valid) {
+            this.loading = true
             login(this.form).then(data => {
               // console.log(data)
               if (data.status === 0) {
@@ -56,10 +60,14 @@
                 this.$router.push('/root')
               } else {
                 this.$message({
-                  message: data.data.message,
+                  message: data.message,
                   type: 'error'
                 })
               }
+              this.loading = false
+            })
+            .catch(() => {
+              this.loading = false
             })
           }
         })
@@ -96,6 +104,12 @@
         color: #fff;
         .el-input__inner{
           width: 90%;
+        }
+        .btn{
+          width: 120px;
+          height: 40px;
+          margin-left: 100px;
+          margin-top: 20px;
         }
       }
     }
